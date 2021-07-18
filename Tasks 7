@@ -1,0 +1,115 @@
+Tasks 7
+
+Program for Variance and Standard Deviation of an array
+Given an array, we need to calculate the variance and standard deviation of the elements of the array. 
+Examples : 
+ 
+
+Input  : arr[] = [1, 2, 3, 4, 5]
+Output : Variance = 2
+         Standard Deviation = 1   
+
+Input  : arr[] = [7, 7, 8, 8, 3]
+Output : Variance = 3
+         Standard Deviation = 1
+
+
+// Java program to find variance 
+// and standard deviation of 
+// given array.
+
+import java.io.*;
+ 
+
+class GFG 
+{
+ 
+
+    // Function for calculating 
+
+    // variance
+
+    static double variance(double a[], 
+
+                           int n)
+
+    {
+
+        // Compute mean (average 
+
+        // of elements)
+
+        double sum = 0;
+
+         
+
+        for (int i = 0; i < n; i++)
+
+            sum += a[i];
+
+        double mean = (double)sum / 
+
+                      (double)n;
+
+     
+
+        // Compute sum squared 
+
+        // differences with mean.
+
+        double sqDiff = 0;
+
+        for (int i = 0; i < n; i++) 
+
+            sqDiff += (a[i] - mean) * 
+
+                      (a[i] - mean);
+
+         
+
+        return (double)sqDiff / n;
+
+    }
+
+     
+
+    static double standardDeviation(double arr[], 
+
+                                    int n)
+
+    {
+
+        return Math.sqrt(variance(arr, n));
+
+    }
+
+     
+
+    // Driver Code
+
+    public static void main (String[] args) 
+
+    {
+
+     
+
+    double arr[] = {600, 470, 170, 430, 300};
+
+    int n = arr.length;
+
+     
+
+    System.out.println( "Variance: " + 
+
+                         variance(arr, n));
+
+    System.out.println ("Standard Deviation: " + 
+
+                         standardDeviation(arr, n)); 
+
+     
+
+    }
+}
+ 
+// This code is contributed by vt_m.
