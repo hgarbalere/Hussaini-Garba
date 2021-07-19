@@ -1,0 +1,22 @@
+(i) To solve this problem,we can use HAVING and GROUP BY, and then connect Tenants with INNER JOIN.
+SELECT TenantName from Tenants INNER JOIN
+
+        (SELECT TenantID FROM AptTenantsID
+         HAVING count(*)>1)C ON Tenants.TenantID=C.TenantID
+
+(ii) This question directly connects Request and Apartments to list the building ID and obtain 
+the number of open applications.
+
+         SELECT BUILDINGName, ISNULL (Count,0) as 'count'
+         FROM Buildings.
+         LEFT JOIN
+
+         (SELECT Apartments. BuildingID, count (*) as 'count'
+      
+         FROM request INNER JOIN Apartments
+         ON Requests.AptID=Apartments.AptID WHERE Requests.Status='open'
+
+         GROUP BY Apartments.BuildingID)
+         Reqcounts
+         ON
+         Reqcounts.BuildingID=Buildings.BuildingID.
